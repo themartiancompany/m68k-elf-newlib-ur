@@ -9,9 +9,10 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-newlib
+# Latest version 4.4.0.20231231 does not build with GCC 14.1, so stay in previous release
 pkgver=4.3.0
 _suffix=.20230120
-pkgrel=2
+pkgrel=3
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
 url="https://sourceware.org/newlib/"
@@ -31,7 +32,8 @@ prepare() {
 build() {
   cd ${srcdir}/newlib-build
 
-  export CFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections -fomit-frame-pointer -ffast-math"
+  # Should remove -Wno-implicit-function-declaration and -Wno-implicit-int when newlib fixes the build
+  export CFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections -fomit-frame-pointer -ffast-math -Wno-implicit-function-declaration -Wno-implicit-int"
   ../newlib-${pkgver}${_suffix}/configure \
     --target=${_target} \
     --prefix=/usr \
