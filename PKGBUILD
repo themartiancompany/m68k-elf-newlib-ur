@@ -10,9 +10,9 @@ _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-newlib
 # Latest version 4.4.0.20231231 does not build with GCC 14.1, so stay in previous release
-pkgver=4.3.0
-_suffix=.20230120
-pkgrel=3
+pkgver=4.5.0
+_suffix=.20241231
+pkgrel=1
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
 url="https://sourceware.org/newlib/"
@@ -23,7 +23,7 @@ makedepends=("${_target}-gcc-bootstrap>=4.3.0")
 options=('!makeflags' '!strip' 'staticlibs' '!libtool')
 PKGEXT="pkg.tar.zst"
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}${_suffix}.tar.gz")
-sha512sums=('4a06309d36c2255fef8fc8f2d133cafa850f1ed2eddfb27b5d45f5d16af69e0fca829a0b4c9b34af4ed3a28c6fcc929761e0ee823a4229f35c2853d432b5e7ef')
+sha512sums=('d391ea3ac68ddb722909ef790f81ba4d6c35d9b2e0fcdb029f91a6c47db9ee94a686a2bdff211fb84025e1a317e257acfa59abda3fd2bc6609966798e1c604dc')
 
 prepare() {
   mkdir ${srcdir}/newlib-build
