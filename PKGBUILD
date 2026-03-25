@@ -48,7 +48,7 @@ pkgname=(
 # Latest version 4.4.0.20231231 does not build with GCC 14.1, so stay in previous release
 pkgver=4.5.0
 _suffix=.20241231
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(
   # Why was it reported 'any'?
@@ -84,12 +84,18 @@ _tarname="${_pkg}-${pkgver}"
 source=(
   "ftp://sourceware.org/pub/${_pkg}/${_tarname}${_suffix}.tar.gz"
 )
+_sum="33f12605e0054965996c25c1382b3e463b0af91799001f5bb8c0630f2ec8c852"
+_sig_sum="b98164ce5cd3754859daac579336106063affefb0618dcaf52be28192f9828b3"
+sha256sums=(
+  "${_sum}"
+)
 sha512sums=(
   'd391ea3ac68ddb722909ef790f81ba4d6c35d9b2e0fcdb029f91a6c47db9ee94a686a2bdff211fb84025e1a317e257acfa59abda3fd2bc6609966798e1c604dc'
 )
 
 prepare() {
   mkdir \
+    -p \
     "${srcdir}/${_pkg}-build"
 }
 
