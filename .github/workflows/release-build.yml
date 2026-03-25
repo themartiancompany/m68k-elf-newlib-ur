@@ -2328,7 +2328,7 @@ jobs:
         uses:
           actions/upload-release-asset@v1
         env:
-          GH_TOKEN:
+          GITHUB_TOKEN:
             ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url:
