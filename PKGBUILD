@@ -38,6 +38,18 @@
 # Be warned that multilib packages will take a lot more time to build, and
 # will also require more disk space.
 
+_evmfs_available="$(
+  command \
+    -v \
+    "evmfs" || \
+    true)"
+if [[ ! -v "_evmfs" ]]; then
+  if [[ "${_evmfs_available}" != "" ]]; then
+    _evmfs="true"
+  elif [[ "${_evmfs_available}" == "" ]]; then
+    _evmfs="false"
+  fi
+fi
 _target=m68k-elf
 _target_cpu=m68000
 _pkg=newlib
@@ -48,7 +60,7 @@ pkgname=(
 # Latest version 4.4.0.20231231 does not build with GCC 14.1, so stay in previous release
 pkgver=4.5.0
 _suffix=.20241231
-pkgrel=2
+pkgrel=3
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(
   # Why was it reported 'any'?
