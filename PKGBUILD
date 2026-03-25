@@ -88,7 +88,7 @@ pkgname=(
 # Latest version 4.4.0.20231231 does not build with GCC 14.1, so stay in previous release
 pkgver=4.5.0
 _suffix=.20241231
-pkgrel=13
+pkgrel=14
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(
   # Why was it reported 'any'?
@@ -228,7 +228,7 @@ build() {
   # Should remove -Wno-implicit-function-declaration
   # and -Wno-implicit-int when newlib fixes the build
   export CFLAGS_FOR_TARGET="${_cflags[*]}"
-  "../${_tarname}${_suffix}/configure" \
+  "../${_tarname}/configure" \
     "${_configure_opts[@]}"
   make
 }
