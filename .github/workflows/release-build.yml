@@ -251,7 +251,8 @@ jobs:
                 "gh" \
                 "git" \
                 "jq" \
-                "tree"
+                "tree" \
+                "unzip"
       # - name:
       #     Installs Capnproto.
       #   run: |
